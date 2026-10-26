@@ -6,32 +6,17 @@ const completedTasksList = document.getElementById("completed-tasks");
 const createNewTaskElement = function (taskText) {
   const listItem = document.createElement("li");
 
-  const checkBox = document.createElement("input");
-  const label = document.createElement("label");
-  const editInput = document.createElement("input");
-  const editButton = document.createElement("button");
-  const deleteButton = document.createElement("button");
-  const deleteButtonImg = document.createElement("img");
+  listItem.innerHTML = `
+    <input type="checkbox">
+    <label class="task"></label>
+    <input type="text" class="task">
+    <button class="edit">Edit</button>
+    <button class="delete"><img src="./remove.svg" alt="Delete task"></button>
+  `;
 
-  label.innerText = taskText;
-  label.className = "task";
+  // innerText encodes special characters, HTML does not.
+  listItem.querySelector("label").innerText = taskText;
 
-  checkBox.type = "checkbox";
-  editInput.type = "text";
-  editInput.className = "task";
-
-  editButton.innerText = "Edit"; //innerText encodes special characters, HTML does not.
-  editButton.className = "edit";
-
-  deleteButton.className = "delete";
-  deleteButtonImg.src = "./remove.svg";
-  deleteButton.appendChild(deleteButtonImg);
-
-  listItem.appendChild(checkBox);
-  listItem.appendChild(label);
-  listItem.appendChild(editInput);
-  listItem.appendChild(editButton);
-  listItem.appendChild(deleteButton);
   return listItem;
 };
 
